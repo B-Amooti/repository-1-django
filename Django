@@ -1,0 +1,23 @@
+#views .py
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+def members(request):
+    return HttpResponse("Hello world!")
+
+#app url
+from django.urls import path 
+from . import views
+
+urlpatterns = [  # Corrected variable name
+    path("members/", views.members, name="members")
+]
+
+#project url
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('', include('members.urls')),
+    path('admin/', admin.site.urls),
+]
